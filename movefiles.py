@@ -57,9 +57,9 @@ def checkPicture():
   
 def checkTXT():
     os.chdir(chosenDirectory) # changes directory to the one chosen
-    os.makedirs(fileName) # creates a folder called Images
+    os.makedirs(fileName) # creates a folder called fileName
     
-    chosenDestination =  os.path.join(os.getcwd(), fileName) # joins directory with images
+    chosenDestination =  os.path.join(os.getcwd(), fileName) # joins directory with fileName
     filelist = os.listdir()
     filelist = [files.upper() for files in filelist] # converts everything to uppercase for faster comparisons
     
@@ -90,9 +90,9 @@ def checkTXT():
 
 def checkAudio():
     os.chdir(chosenDirectory) # changes directory to the one chosen
-    os.makedirs(fileName) # creates a folder called Images
+    os.makedirs(fileName) # creates a folder called fileName
     
-    chosenDestination =  os.path.join(os.getcwd(), fileName) # joins directory with images
+    chosenDestination =  os.path.join(os.getcwd(), fileName) # joins directory with fileName
     filelist = os.listdir()
     filelist = [files.upper() for files in filelist] # converts everything to uppercase for faster comparisons
     
