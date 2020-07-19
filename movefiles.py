@@ -23,7 +23,7 @@ time.sleep(3)
 # Functions
 def checkPicture():
     os.chdir(chosenDirectory) # changes directory to the one chosen
-    os.makedirs(fileName) # creates a folder called Images
+    os.makedirs(fileName) # creates a folder with name fileName
     
     chosenDestination =  os.path.join(os.getcwd(), fileName) # joins directory with images
     filelist = os.listdir()
