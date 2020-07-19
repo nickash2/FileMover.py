@@ -1,2 +1,2 @@
-@py C:\Users\Nick\Desktop\movefiles\movefiles.py %*
+@py [INSERT PATH OF PY FILE HERE] %*
 @pause
