@@ -1,0 +1,11 @@
+.JPG
+.PNG
+.GIF
+.WEBP
+.TIFF
+.PSD
+.RAW
+.BMP
+.HEIF
+.INDD
+.JPEG

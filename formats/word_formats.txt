@@ -1,0 +1,4 @@
+.TXT
+.DOCX
+.RTF
+.PDF
