@@ -9,8 +9,8 @@ This simple script allows you to move thousands of files and sort them all in a 
 I am aiming on adding more and more formats in the future. Currently the only formats available are from:
 
 **Audio files:**
- - .MP3 
- - .WAV
+ - MP3 
+ - WAV
  - OGG
  - AAC
  - WMA
@@ -18,23 +18,23 @@ I am aiming on adding more and more formats in the future. Currently the only fo
  - M4A
 
 **Image files**:
- - .JPG 
- - .PNG
- -  .GIF 
- - .WEBP 
- - .TIFF 
- - .PSD
- - .RAW 
- - .BMP 
- - .HEIF 
- - .INDD 
- - .JPEG
+ - JPG 
+ - PNG
+ - GIF 
+ - WEBP 
+ - TIFF 
+ - PSD
+ - RAW 
+ - BMP 
+ - HEIF 
+ - INDD 
+ - JPEG
 
 **Word Processing files**:
- - .TXT
- - .DOCX
- - .RTF
- - .PDF
+ - TXT
+ - DOCX
+ - RTF
+ - PDF
  
 
 **More coming soon!**
