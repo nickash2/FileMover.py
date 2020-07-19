@@ -6,9 +6,9 @@ This simple script allows you to move thousands of files and sort them all in a 
 - Python 3.8
 
 ## Some more info:
-I am aiming on adding more and more formats in the future. Currently the only formats available from:
+I am aiming on adding more and more formats in the future. Currently the only formats available are from:
 
-**Audio:**
+**Audio files:**
  - .MP3 
  - .WAV
  - OGG
@@ -17,7 +17,7 @@ I am aiming on adding more and more formats in the future. Currently the only fo
  - FLAC
  - M4A
 
-**Images**:
+**Image files**:
  - .JPG 
  - .PNG
  -  .GIF 
@@ -30,7 +30,7 @@ I am aiming on adding more and more formats in the future. Currently the only fo
  - .INDD 
  - .JPEG
 
-**Word Processing**:
+**Word Processing files**:
  - .TXT
  - .DOCX
  - .RTF
