@@ -2,9 +2,9 @@ import os
 import shutil
 import time
 
-
-
 # Classes
+
+
 class CheckValidNumbers:
     def __init__(self, decisionType, listType):
         self.decisionType = decisionType
@@ -27,20 +27,36 @@ class CheckValidNumbers:
                 break  # breaks out of the loop and continues if the number is valid.
 
 
+class CheckDir:
+    def __init__(self, userChosenDir):
+        self.userChosenDir = userChosenDir
+
+    def funcDir(self):
+        while True:
+            try:
+                self.userChosenDir = input('Enter it here: ')
+                os.chdir(self.userChosenDir)
+            except FileNotFoundError and OSError:
+                print('You have not entered a valid directory, please try again')
+                continue
+            else:
+                break
 
 
-class CheckFunctions:
-    def __init__(self, formatfile):  # constructor with formatfile
+class CheckFunctions(CheckDir):
+    def __init__(self, formatfile, userChosenDir):  # constructor with formatfile
+        super().__init__(userChosenDir)
         self.formatfile = formatfile  # defines format file to be initialised later
 
-    def check(self):
-        os.chdir(userChosenDir)  # changes directory to the one chosen
+    def checkFunc(self):
+        os.chdir(self.userChosenDir)  # changes directory to the one chosen
+
         if createFolder:
             os.makedirs(inputName)  # creates a folder called inputName
             destination = os.path.join(os.getcwd(), inputName)  # joins directory with inputName
         else:
             destination = inputFolderDir
-        filelist = os.listdir(userChosenDir)
+        filelist = os.listdir(self.userChosenDir)
         filelist = [files.upper() for files in filelist]  # converts everything to uppercase for faster comparisons
 
         for file in filelist:
@@ -50,14 +66,14 @@ class CheckFunctions:
             with open(self.formatfile,
                       'r') as textFormat:  # self.formatfile essentially becomes what was defined in the constructor
 
-                os.chdir(userChosenDir)  # changes directory to chosen directory
+                os.chdir(self.userChosenDir)  # changes directory to chosen directory
 
                 for text in textFormat.readlines():  # loop that reads all lines of image_formats.txt
 
                     if os.path.isfile(os.path.join(os.getcwd(), file)):
 
                         if file.endswith(text.strip()):  # if the file ends with any of the formats, enter if statement
-                            os.chdir(userChosenDir)
+                            os.chdir(self.userChosenDir)
                             shutil.move(os.path.join(os.getcwd(), file),
                                         destination)  # move file from chosen directory to the chosen destination.
                             print(str(file) + ' is an image file with format ' + text)
@@ -70,42 +86,38 @@ class CheckFunctions:
                 os.chdir(os.path.dirname(__file__))  # change directory back to py file
 
 
-
-
 # Ask where these files are
 print('Where are the files you wish to be sorted located? (write the full directory)')
 
 # Validation that the user enters a valid directory
-while True:
-    try:
-        userChosenDir = input('Enter it here: ')
-        os.chdir(userChosenDir)
-    except FileNotFoundError and OSError:
-        print('You have not entered a valid directory, please try again')
-        continue
-    else:
-        break
+userInput = 0
+dirObj = CheckDir(userInput)
+dirObj.funcDir()
+userInput = dirObj.userChosenDir
 
 # Ask and assign what type of file should be moved (image,exe, xsls, docx etc.)
 
 print(
     'What type of files do you want to move?\nPlease type: \n1) Image file\n2) Word processing file\n3) Audio '
-    'file\n4) Excel file\n5) Program files ')
+    'file\n4) Excel file\n5) All files ')
 validNoList = [1, 2, 3, 4, 5]
 validNoList2 = [1, 2]
 typeDecision = 0
-decisionObj = CheckValidNumbers(typeDecision, validNoList )
+decisionObj = CheckValidNumbers(typeDecision, validNoList)
 decisionObj.checkValidNo()
-
+typeDecision = decisionObj.decisionType
+# Prompt Options
 print('Would you like to:\n1) Create a new folder\n2) Use an existing folder')
 fileNoChoose = 0
-fileNoObj = CheckValidNumbers(fileNoChoose,validNoList2)
+fileNoObj = CheckValidNumbers(fileNoChoose, validNoList2)
 fileNoObj.checkValidNo()
 createFolder = False
+
 # Variables for selection-if statement.
 inputFolderDir = ''
 inputName = ''
 fileNoChoose = fileNoObj.decisionType
+
 if fileNoChoose == 1:
     createFolder = True
     print('What do you want the folder that all the files are in called?')
@@ -115,35 +127,51 @@ elif fileNoChoose == 2:
     inputFolderDir = input()
 print('Thanks! Preparing to sort the files...')
 time.sleep(3)
-
-
-typeDecision = decisionObj.decisionType
+typeList = ['excel', 'image', 'audio', 'word']
 # If statements
+
 if typeDecision == 1:
-    calling = CheckFunctions('formats//image_formats.txt')  # initialise the class constructor defining self.formatfile
-    calling.check()  # runs the check() function that finishes the job off.
+    calling = CheckFunctions('formats//image_formats.txt', userInput)  # initialise the class constructor defining self.formatfile
+    calling.checkFunc()  # runs the check() function that finishes the job off.
     if createFolder:
         print('Done! All files have been moved to a folder ' + inputName + ' located in your selected directory!')
     else:
         print('Done! All files have been moved to a folder with directory ' + inputFolderDir)
 
 elif typeDecision == 2:
-    calling = CheckFunctions('formats//word_formats.txt')  # initialise the class constructor defining self.formatfile
-    calling.check()  # runs the check() function that finishes the job off.
+    calling = CheckFunctions('formats//word_formats.txt', userInput)  # initialise the class constructor defining self.formatfile
+    calling.checkFunc()  # runs the check() function that finishes the job off.
     if createFolder:
         print('Done! All files have been moved to a folder ' + inputName + ' located in your selected directory!')
     else:
         print('Done! All files have been moved to a folder with directory ' + inputFolderDir)
 elif typeDecision == 3:
-    calling = CheckFunctions('formats//audio_formats.txt')  # initialise the class constructor defining self.formatfile
-    calling.check()  # runs the check() function that finishes the job off.
+    calling = CheckFunctions('formats//audio_formats.txt', userInput)  # initialise the class constructor defining self.formatfile
+    calling.checkFunc()  # runs the check() function that finishes the job off.
     if createFolder:
         print('Done! All files have been moved to a folder ' + inputName + ' located in your selected directory!')
     else:
         print('Done! All files have been moved to a folder with directory ' + inputFolderDir)
 elif typeDecision == 4:
-    calling = CheckFunctions('formats//excel_formats.txt')  # initialise the class constructor defining self.formatfile
-    calling.check()  # runs the check() function that finishes the job off.
+    calling = CheckFunctions('formats//excel_formats.txt', userInput)  # initialise the class constructor defining self.formatfile
+    calling.checkFunc()  # runs the check() function that finishes the job off.
+    if createFolder:
+        print('Done! All files have been moved to a folder ' + inputName + ' located in your selected directory!')
+    else:
+        print('Done! All files have been moved to a folder with directory ' + inputFolderDir)
+
+# TO DO: FIX BUGS AND FIND A WAY TO HAVE AN INCREMENTED WAY TO NAME THE FOLDERS FOR EACH FORMAT
+elif typeDecision == 5:
+    counter = 4
+    calling = CheckFunctions('formats//excel_formats.txt', userInput)  # initialise the class constructor defining self.formatfile
+    secondcalling = CheckFunctions('formats//audio_formats.txt', userInput)
+    thirdcalling = CheckFunctions('formats//image_formats.txt', userInput)
+    fourthcalling = CheckFunctions('formats//word_formats.txt', userInput)
+    calling.checkFunc()  # runs the check() function that finishes the job off.
+
+    secondcalling.checkFunc()
+    thirdcalling.checkFunc()
+    fourthcalling.checkFunc()
     if createFolder:
         print('Done! All files have been moved to a folder ' + inputName + ' located in your selected directory!')
     else:
