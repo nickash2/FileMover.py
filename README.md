@@ -4,6 +4,7 @@ This simple script allows you to move thousands of files and sort them all in a 
 ## Requirements
 
 - Python 3.8
+- Has not tested in other operating systems except Windows 10
 
 ## Some more info:
 I am aiming on adding more and more formats in the future. Currently the only formats available are from:
