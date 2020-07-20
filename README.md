@@ -36,7 +36,8 @@ I am aiming on adding more and more formats in the future. Currently the only fo
  - DOCX
  - RTF
  - PDF
- **Excel files**
+ 
+ **Excel files**:
 - XLSX
 - XLSM
 - XLSB
