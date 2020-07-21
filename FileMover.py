@@ -15,12 +15,14 @@ class CheckValidNumbers:
         while True:
             try:
                 self.decisionType = int(input('Enter one of the numbers: '))
+
                 self.listType[
                     # if the number given is too large it goes over the index of the given list so it raises a IndexError
-                    self.decisionType]  # Allowing the except statement to be called
-
+                    self.decisionType - 1]  # Allowing the except statement to be called
+                print(type(self.decisionType))
                 break
             except (ValueError, IndexError):  # if the value is not a number or the index isn't present in the list
+                print(type(self.decisionType))
                 print('You have not entered a number, please try again')
 
 
@@ -96,6 +98,7 @@ print(
     'file\n4) Excel file\n5) Program files ')
 validNoList = [1, 2, 3, 4, 5]  # list of valid numbers for the 1st print statement
 validNoList2 = [1, 2]  # list of valid numbers for the 2nd print statement
+
 typeDecision = 0
 decisionObj = CheckValidNumbers(typeDecision, validNoList)
 decisionObj.checkValidNo()
