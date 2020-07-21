@@ -47,8 +47,8 @@ I am aiming on adding more and more formats in the future. Currently the only fo
 - XLT
 - XML
 
+**Program files**:
+- .EXE
  
-
-**More coming soon!**
 
 
