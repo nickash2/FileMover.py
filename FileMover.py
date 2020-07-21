@@ -99,7 +99,7 @@ userInput = dirObj.userChosenDir
 
 print(
     'What type of files do you want to move?\nPlease type: \n1) Image file\n2) Word processing file\n3) Audio '
-    'file\n4) Excel file\n5) All files ')
+    'file\n4) Excel file\n5) Program files ')
 validNoList = [1, 2, 3, 4, 5]
 validNoList2 = [1, 2]
 typeDecision = 0
@@ -160,18 +160,10 @@ elif typeDecision == 4:
     else:
         print('Done! All files have been moved to a folder with directory ' + inputFolderDir)
 
-# TO DO: FIX BUGS AND FIND A WAY TO HAVE AN INCREMENTED WAY TO NAME THE FOLDERS FOR EACH FORMAT
+# ORGANIZE COMMENTS TOGETHER AND UPDATE THEM
 elif typeDecision == 5:
-    counter = 4
-    calling = CheckFunctions('formats//excel_formats.txt', userInput)  # initialise the class constructor defining self.formatfile
-    secondcalling = CheckFunctions('formats//audio_formats.txt', userInput)
-    thirdcalling = CheckFunctions('formats//image_formats.txt', userInput)
-    fourthcalling = CheckFunctions('formats//word_formats.txt', userInput)
+    calling = CheckFunctions('formats//program_formats.txt', userInput)  # initialise the class constructor defining self.formatfile
     calling.checkFunc()  # runs the check() function that finishes the job off.
-
-    secondcalling.checkFunc()
-    thirdcalling.checkFunc()
-    fourthcalling.checkFunc()
     if createFolder:
         print('Done! All files have been moved to a folder ' + inputName + ' located in your selected directory!')
     else:
