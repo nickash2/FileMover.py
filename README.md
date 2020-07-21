@@ -1,5 +1,5 @@
 # FileMover.py
-This simple script allows you to move thousands of files and sort them all in a single folder. 
+This simple script allows you to move thousands of files and sort them all in a single folder in just seconds. 
 
 ## Requirements
 
