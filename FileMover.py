@@ -15,7 +15,8 @@ class CheckValidNumbers:
         while True:
             try:
                 self.decisionType = int(input('Enter one of the numbers: '))
-                self.listType[  # if the number given is too large it goes over the index of the given list so it raises a IndexError
+                self.listType[
+                    # if the number given is too large it goes over the index of the given list so it raises a IndexError
                     self.decisionType]  # Allowing the except statement to be called
 
                 break
@@ -63,21 +64,20 @@ class CheckFunctions(CheckDir):
                     os.chdir(self.userChosenDir)  # changes directory to chosen directory
 
                     for text in textFormat.readlines():  # loop that reads all lines of image_formats.txt
+                        if file.endswith(
+                                text.strip()):  # if the file ends with any of the formats, enter if statement
+                            os.chdir(self.userChosenDir)
+                            shutil.move(os.path.join(os.getcwd(), file),
+                                        destination)  # move file from chosen directory to the chosen destination.
+                            print(str(file) + ' is an image file with format ' + text)
+                            break
 
-                        if os.path.isfile(os.path.join(os.getcwd(), file)):
-
-                            if file.endswith(text.strip()):  # if the file ends with any of the formats, enter if statement
-                                os.chdir(self.userChosenDir)
-                                shutil.move(os.path.join(os.getcwd(), file),
-                                            destination)  # move file from chosen directory to the chosen destination.
-                                print(str(file) + ' is an image file with format ' + text)
-                                break
-
-                            else:
-                                print(str(file) + ' is not a match with ' + text)
+                        else:
+                            print(str(file) + ' is not a match with ' + text)
             else:
                 continue
         os.chdir(os.path.dirname(__file__))  # change directory back to py file
+
 
 # Ask where these files are
 
@@ -122,9 +122,10 @@ elif fileNoChoose == 2:
     inputFolderDir = input()
 print('Thanks! Preparing to sort the files...')
 time.sleep(3)
-choice = ['image', 'word', 'audio', 'excel', 'program']
+choicesList = ['image', 'word', 'audio', 'excel', 'program']
 
-calling = CheckFunctions(f'formats//{choice[typeDecision - 1]}_formats.txt',
+#  Format TXT file objects
+calling = CheckFunctions(f'formats//{choicesList[typeDecision - 1]}_formats.txt',
                          userInput)  # initialise the class constructor defining self.formatfile
 calling.checkFunc()  # runs the check() function that finishes the job off.
 if createFolder:
