@@ -10,21 +10,14 @@ class CheckValidNumbers:
         self.decisionType = decisionType
         self.listType = listType
 
-    def checkValidNo(self):
-        while True:
-            try:
-                self.decisionType = int(input('Enter one of the numbers: '))
-            except ValueError:  # if the value is not a number
-                print('You have not entered a number, please try again')
-                continue  # goes back to while True
-            if 0 > self.decisionType > len(self.listType):  # greater than the length of the list & -ve number.
-                print('You have not entered a valid number, please try again')
-                continue  # goes back to while True
-            elif self.decisionType <= 0 or self.decisionType > len(self.listType):
-                print('You have not entered a valid number, please try again')
-                continue  # goes back to while True
-            else:
-                break  # breaks out of the loop and continues if the number is valid.
+def checkValidNo(self):
+    while True:
+        try:
+            self.decisionType = int(input('Enter one of the numbers: '))
+            self.listType[self.decisionType]
+            break
+        except ValueError, IndexError:  # if the value is not a number or the index isn't present in the list
+            print('You have not entered a number, please try again')
 
 
 class CheckDir:
@@ -36,11 +29,11 @@ class CheckDir:
             try:
                 self.userChosenDir = input('Enter it here: ')
                 os.chdir(self.userChosenDir)  # changes directory given by the user
-            except FileNotFoundError and OSError:
-                print('You have not entered a valid directory, please try again')
-                continue
-            else:
                 break
+            except FileNotFoundError, OSError:
+                print('You have not entered a valid directory, please try again')
+              
+            
 
 
 class CheckFunctions(CheckDir):
@@ -128,7 +121,7 @@ elif fileNoChoose == 2:
     inputFolderDir = input()
 print('Thanks! Preparing to sort the files...')
 time.sleep(3)
-typeList = ['excel', 'image', 'audio', 'word']
+#typeList = ['excel', 'image', 'audio', 'word']
 
 if typeDecision == 1:
     calling = CheckFunctions('formats//image_formats.txt', userInput)  # initialise the class constructor defining self.formatfile
