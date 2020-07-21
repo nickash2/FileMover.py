@@ -35,7 +35,7 @@ class CheckDir:
         while True:
             try:
                 self.userChosenDir = input('Enter it here: ')
-                os.chdir(self.userChosenDir)
+                os.chdir(self.userChosenDir)  # changes directory given by the user
             except FileNotFoundError and OSError:
                 print('You have not entered a valid directory, please try again')
                 continue
@@ -91,17 +91,17 @@ print('Where are the files you wish to be sorted located? (write the full direct
 
 # Validation that the user enters a valid directory
 userInput = 0
-dirObj = CheckDir(userInput)
-dirObj.funcDir()
-userInput = dirObj.userChosenDir
+dirObj = CheckDir(userInput)  # creates an object with the users input
+dirObj.funcDir()  # calls funDir in the CheckDir class
+userInput = dirObj.userChosenDir  # assigns the userinput variable to the userchosendir given before.
 
 # Ask and assign what type of file should be moved (image,exe, xsls, docx etc.)
 
 print(
     'What type of files do you want to move?\nPlease type: \n1) Image file\n2) Word processing file\n3) Audio '
     'file\n4) Excel file\n5) Program files ')
-validNoList = [1, 2, 3, 4, 5]
-validNoList2 = [1, 2]
+validNoList = [1, 2, 3, 4, 5]  # list of valid numbers for the 1st print statement
+validNoList2 = [1, 2]  # list of valid numbers for the 2nd print statement
 typeDecision = 0
 decisionObj = CheckValidNumbers(typeDecision, validNoList)
 decisionObj.checkValidNo()
@@ -118,6 +118,7 @@ inputFolderDir = ''
 inputName = ''
 fileNoChoose = fileNoObj.decisionType
 
+# If statements
 if fileNoChoose == 1:
     createFolder = True
     print('What do you want the folder that all the files are in called?')
@@ -128,7 +129,6 @@ elif fileNoChoose == 2:
 print('Thanks! Preparing to sort the files...')
 time.sleep(3)
 typeList = ['excel', 'image', 'audio', 'word']
-# If statements
 
 if typeDecision == 1:
     calling = CheckFunctions('formats//image_formats.txt', userInput)  # initialise the class constructor defining self.formatfile
@@ -160,7 +160,6 @@ elif typeDecision == 4:
     else:
         print('Done! All files have been moved to a folder with directory ' + inputFolderDir)
 
-# ORGANIZE COMMENTS TOGETHER AND UPDATE THEM
 elif typeDecision == 5:
     calling = CheckFunctions('formats//program_formats.txt', userInput)  # initialise the class constructor defining self.formatfile
     calling.checkFunc()  # runs the check() function that finishes the job off.
