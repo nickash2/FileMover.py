@@ -18,7 +18,7 @@ class CheckValidNumbers:
 
                 self.listType[
                     # if the number given is too large it goes over the index of the given list so it raises a IndexError
-                    self.decisionType - 1]  # Allowing the except statement to be called
+                    self.decisionType - 1]  # Allowing the except statement to be called, - 1 as to avoid index error.
                 print(type(self.decisionType))
                 break
             except (ValueError, IndexError):  # if the value is not a number or the index isn't present in the list
