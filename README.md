@@ -7,7 +7,6 @@ This simple script allows you to move thousands of files and sort them all in a 
 - Tested only on Windows 10, have not tested compatibility with other OS's yet.
 
 ## Some more info:
-I am aiming on adding more and more formats in the future. Currently the only formats available are from:
 
 **Audio files:**
  - MP3 
