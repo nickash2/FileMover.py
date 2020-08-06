@@ -3,7 +3,7 @@ This simple script allows you to move thousands of files and sort them all in a 
 
 ## Requirements
 
-- Python 3.8
+- Python 3.8+
 - Tested only on Windows 10, have not tested compatibility with other OS's yet.
 
 ## Some more info:
